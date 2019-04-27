@@ -1,0 +1,59 @@
+//
+//  QuestionData.swift
+//  PersonalityQuiz
+//
+//  Created by Dayson Dong on 2019-04-21.
+//  Copyright © 2019 Dayson Dong. All rights reserved.
+//
+
+import Foundation
+
+struct Question {
+    var text: String
+    var type: ResponseType
+    var answer: [Answer]
+}
+
+enum ResponseType {
+    case single, multiple, ranged
+}
+
+struct Answer {
+    var text: String
+    var type: AnimalType
+}
+
+enum AnimalType: Character {
+    case dog = "🐶", cat = "🐱", rabbit = "🐰", turtle = "🐢"
+    
+    var definition: String {
+        switch self {
+        case .dog:
+            return "You are incredibly outgoing. You surround yourself with the people you love and enjoy activities with your friends."
+        case .cat:
+            return "Mischievous, yet mild-tempered, you enjoy doing things on your own terms"
+        case.rabbit:
+            return "You love everything thats soft. You are healthy and full of energy."
+        case.turtle:
+            return "You are wise beyond your years, and you focus on the details. Slow and steady wins the race."
+        }
+    }
+}
+
+var questions: [Question] = [
+    Question(text: "Which food do you like the most?", type: .single, answer: [Answer(text: "Steak", type: .dog),
+                                                                               Answer(text: "Fish", type: .cat),
+                                                                               Answer(text: "Carrots", type: .rabbit),
+                                                                               Answer(text: "Corn", type: .turtle)
+        ]),
+    Question(text: "Which sctivities do you enjoy?", type: .multiple, answer: [Answer(text: "Swimming", type: .turtle),
+                                                                               Answer(text: "Sleeping", type: .cat),
+                                                                               Answer(text: "Cuddling", type: .rabbit),
+                                                                               Answer(text: "Eating", type: .dog)
+        ]),
+    Question(text: "How much do you enjoy car rides?", type: .ranged, answer: [Answer(text: "I dislike them.", type: .cat),
+                                                                               Answer(text: "I get a little nervous.", type: .rabbit),
+                                                                               Answer(text: "I barely notice them.", type: .turtle),
+                                                                               Answer(text: "I love them a lot.", type: .dog)
+        ])
+]
